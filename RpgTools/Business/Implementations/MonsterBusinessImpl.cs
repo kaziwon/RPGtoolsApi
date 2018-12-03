@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RpgTools.Model;
+using RpgTools.Repository;
 
 namespace RpgTools.Business.Implementations
 {
     public class MonsterBusinessImpl : IMonsterBusiness
     {
+        private readonly IMonsterRepository _repository;
         public MonsterModel Create(MonsterModel monster)
         {
             throw new NotImplementedException();
@@ -20,7 +22,7 @@ namespace RpgTools.Business.Implementations
 
         public List<MonsterModel> FindAll()
         {
-            throw new NotImplementedException();
+           return _repository.FindAll();
         }
 
         public MonsterModel FindById(long id)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RpgTools.Repository
 {
-    interface IMonsterRepository
+   public interface IMonsterRepository
     {
         MonsterModel Create(MonsterModel monster);
         MonsterModel FindById(long id);

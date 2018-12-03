@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using RpgTools.Business;
 
 namespace RpgTools.Controllers
 {
@@ -10,11 +11,12 @@ namespace RpgTools.Controllers
     [ApiController]
     public class MonsterController : ControllerBase
     {
+        private IMonsterBusiness _monsterBusiness;
         
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(0);
+            return Ok(_monsterBusiness.FindAll());
         }
 
         

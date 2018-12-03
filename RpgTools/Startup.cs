@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using RpgTools.Business;
+using RpgTools.Business.Implementations;
+using RpgTools.Repository;
+using RpgTools.Repository.Implementations;
 
 namespace RpgTools
 {
@@ -26,6 +30,8 @@ namespace RpgTools
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddScoped<IMonsterRepository, MonsterRepositoryImpl>();
+            services.AddScoped<IMonsterBusiness, MonsterBusinessImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

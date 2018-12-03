@@ -33,7 +33,10 @@ namespace RpgTools.Repository.Implementations
         {
             actionmock = new List<ActionModel>();
             actionmock.Add(new ActionModel(1, "Atacar", "Dá um ataque"));
+            actionmock.Add(new ActionModel(2, "Defender", "Defende"));
 
+            talentomock = new List<TalentoModel>();
+            talentomock.Add(new TalentoModel(1,"Mortal", "Dá um mortal para tras"));
             monstermock = new MonsterModel();
             monstermock.Name = "Jorge";
             monstermock.Id = 1;
@@ -42,8 +45,9 @@ namespace RpgTools.Repository.Implementations
             monstermock.HitPoints = 442;
             monstermock.Speed = 2;
             monstermock.Status = new StatusModel(10,2,10,1,1,2);
-           
-            
+            monstermock.Action = actionmock;
+            monstermock.Talent = talentomock;
+                          
 
             return monstermock;
         }
