@@ -21,7 +21,7 @@ namespace RpgTools.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(0);
+            return Ok("oi");
         }
 
         

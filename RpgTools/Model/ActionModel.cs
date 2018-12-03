@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
-
-namespace RpgTools.Model
+﻿namespace RpgTools.Model
 {
     public class ActionModel 
     {
+        public ActionModel(int id,string name,string description)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Description = description;
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
