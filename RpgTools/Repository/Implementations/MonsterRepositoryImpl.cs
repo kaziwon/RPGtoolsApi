@@ -64,17 +64,6 @@ namespace RpgTools.Repository.Implementations
 
             };
 
-            // monstermock.Name = "Jorge";
-            // monstermock.Id = 1;
-            // monstermock.Armor = 42;
-            // monstermock.Description = "Jorge é um monstro";
-            // monstermock.HitPoints = 442;
-            // monstermock.Speed = 2;
-            // monstermock.Skills = new List<string>();
-            // monstermock.Status = new StatusModel { Strength =  10, Dexterity = 2, Constitution = 11, Intelligence = 1, Wisdom = 1, Charisma = 5 };
-            // monstermock.Action = actionmock;    
-            // monstermock.Talent = talentomock;
-
             listamonstermock.Add(monstermock);
 
             return listamonstermock;
