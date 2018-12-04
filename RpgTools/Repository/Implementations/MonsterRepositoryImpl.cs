@@ -37,17 +37,43 @@ namespace RpgTools.Repository.Implementations
             talentomock = new List<TalentoModel>();
             talentomock.Add(new TalentoModel(1, "Mortal", "Dá um mortal para tras"));
 
-            monstermock = new MonsterModel();
-            monstermock.Name = "Jorge";
-            monstermock.Id = 1;
-            monstermock.Armor = 42;
-            monstermock.Description = "Jorge é um monstro";
-            monstermock.HitPoints = 442;
-            monstermock.Speed = 2;
-            monstermock.Skills = new List<string>();
-            monstermock.Status = new StatusModel { Strength =  10, Dexterity = 2, Constitution = 11, Intelligence = 1, Wisdom = 1, Charisma = 5 };
-            monstermock.Action = actionmock;    
-            monstermock.Talent = talentomock;
+            monstermock = new MonsterModel{
+                Name = "Jorge",
+                Id = 1,
+                Armor = 42,
+                Description = "Jorge é um monstro",
+                HitPoints = 442,
+                Speed = 2,
+                Skills = new List<String>{
+                    "Rage",
+                    "Berserker"
+                },
+                Status = new StatusModel { 
+                    Strength =  10,
+                    Dexterity = 2,
+                    Constitution = 11,
+                    Intelligence = 1,
+                    Wisdom = 1,
+                    Charisma = 5 },
+                Action = actionmock,
+                Talent = talentomock,
+                Vulnerabilities = new List<String>{
+                    "Poison",
+                    "Fire"
+                }
+
+            };
+
+            // monstermock.Name = "Jorge";
+            // monstermock.Id = 1;
+            // monstermock.Armor = 42;
+            // monstermock.Description = "Jorge é um monstro";
+            // monstermock.HitPoints = 442;
+            // monstermock.Speed = 2;
+            // monstermock.Skills = new List<string>();
+            // monstermock.Status = new StatusModel { Strength =  10, Dexterity = 2, Constitution = 11, Intelligence = 1, Wisdom = 1, Charisma = 5 };
+            // monstermock.Action = actionmock;    
+            // monstermock.Talent = talentomock;
 
             listamonstermock.Add(monstermock);
 
