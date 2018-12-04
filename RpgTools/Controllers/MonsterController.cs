@@ -12,7 +12,12 @@ namespace RpgTools.Controllers
     public class MonsterController : ControllerBase
     {
         private IMonsterBusiness _monsterBusiness;
-        
+
+        public MonsterController(IMonsterBusiness monsterBusiness)
+        {
+            _monsterBusiness = monsterBusiness;
+        }
+
         [HttpGet]
         public IActionResult Get()
         {

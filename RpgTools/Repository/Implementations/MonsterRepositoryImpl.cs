@@ -26,17 +26,17 @@ namespace RpgTools.Repository.Implementations
 
         public List<MonsterModel> FindAll()
         {
-            throw new NotImplementedException();
-        }
+            List<MonsterModel> listamonstermock = new List<MonsterModel>();
+            actionmock = new List<ActionModel>
+            {
+                new ActionModel {Id =1, Name = "Atacar", Description = "Dá um ataque" },
+                new ActionModel {Id = 2, Name = "Defender", Description = "Defende"}
+            };
 
-        public MonsterModel FindById(long id)
-        {
-            actionmock = new List<ActionModel>();
-            actionmock.Add(new ActionModel(1, "Atacar", "Dá um ataque"));
-            actionmock.Add(new ActionModel(2, "Defender", "Defende"));
 
             talentomock = new List<TalentoModel>();
-            talentomock.Add(new TalentoModel(1,"Mortal", "Dá um mortal para tras"));
+            talentomock.Add(new TalentoModel(1, "Mortal", "Dá um mortal para tras"));
+
             monstermock = new MonsterModel();
             monstermock.Name = "Jorge";
             monstermock.Id = 1;
@@ -44,12 +44,19 @@ namespace RpgTools.Repository.Implementations
             monstermock.Description = "Jorge é um monstro";
             monstermock.HitPoints = 442;
             monstermock.Speed = 2;
-            monstermock.Status = new StatusModel(10,2,10,1,1,2);
-            monstermock.Action = actionmock;
+            monstermock.Skills = new List<string>();
+            monstermock.Status = new StatusModel { Strength =  10, Dexterity = 2, Constitution = 11, Intelligence = 1, Wisdom = 1, Charisma = 5 };
+            monstermock.Action = actionmock;    
             monstermock.Talent = talentomock;
-                          
 
-            return monstermock;
+            listamonstermock.Add(monstermock);
+
+            return listamonstermock;
+        }
+
+        public MonsterModel FindById(long id)
+        {
+            throw new NotImplementedException();
         }
 
         public MonsterModel Update(MonsterModel monster)

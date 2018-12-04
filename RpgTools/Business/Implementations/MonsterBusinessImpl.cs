@@ -10,6 +10,12 @@ namespace RpgTools.Business.Implementations
     public class MonsterBusinessImpl : IMonsterBusiness
     {
         private readonly IMonsterRepository _repository;
+
+        public MonsterBusinessImpl(IMonsterRepository monsterRepository)
+        {
+            _repository = monsterRepository;
+        }
+
         public MonsterModel Create(MonsterModel monster)
         {
             throw new NotImplementedException();

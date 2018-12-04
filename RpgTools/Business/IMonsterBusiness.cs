@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RpgTools.Business
 {
-    interface IMonsterBusiness
+   public interface IMonsterBusiness
     {
         MonsterModel Create(MonsterModel monster);
         MonsterModel FindById(long id);
