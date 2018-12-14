@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RpgTools.Business;
+using RpgTools.Model;
 
 namespace RpgTools.Controllers
 {
@@ -33,9 +34,10 @@ namespace RpgTools.Controllers
 
         
         [HttpPost]
-        public IActionResult Post([FromBody] string value)
+        public IActionResult Post([FromBody] MonsterModel monster)
         {
-            return Ok(0);
+            if(monster == null) return BadRequest();
+            return new ObjectResult(_monsterBusiness.Create(monster));
         }
 
        

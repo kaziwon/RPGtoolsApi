@@ -30,7 +30,7 @@ namespace RpgTools
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddScoped<IMonsterRepository, MonsterRepositoryImpl>();
+            services.AddSingleton<IMonsterRepository, MonsterRepositoryImpl>();
             services.AddScoped<IMonsterBusiness, MonsterBusinessImpl>();
         }
 

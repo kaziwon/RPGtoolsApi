@@ -18,7 +18,7 @@ namespace RpgTools.Business.Implementations
 
         public MonsterModel Create(MonsterModel monster)
         {
-            throw new NotImplementedException();
+           return  _repository.Create(monster);
         }
 
         public void Delete(long id)

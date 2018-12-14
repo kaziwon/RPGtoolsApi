@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RpgTools.Repository.Implementations;
 
 namespace RpgTools.Repository
 {
@@ -13,5 +14,6 @@ namespace RpgTools.Repository
         List<MonsterModel> FindAll();
         MonsterModel Update(MonsterModel monster);
         void Delete(long id);
+      
     }
 }

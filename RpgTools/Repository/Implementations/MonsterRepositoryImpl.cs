@@ -13,10 +13,16 @@ namespace RpgTools.Repository.Implementations
         public static StatusModel statusmock;
         public static List<TalentoModel> talentomock;
 
-        
-        public MonsterModel Create(MonsterModel monster)
+        private List<MonsterModel> _monstersingle = new List<MonsterModel>();
+
+        // private MonsterRepositoryImpl()
+        // {
+        //     _monstersingle = new List<MonsterModel>();
+        // }
+        public  MonsterModel Create(MonsterModel monster)
         {
-            throw new NotImplementedException();
+           _monstersingle.Add(monster);
+           return monster;
         }
 
         public void Delete(long id)
@@ -26,47 +32,8 @@ namespace RpgTools.Repository.Implementations
 
         public List<MonsterModel> FindAll()
         {
-            List<MonsterModel> listamonstermock = new List<MonsterModel>();
-            actionmock = new List<ActionModel>
-            {
-                new ActionModel {Id =1, Name = "Atacar", Description = "Dá um ataque" },
-                new ActionModel {Id = 2, Name = "Defender", Description = "Defende"}
-            };
-
-
-            talentomock = new List<TalentoModel>();
-            talentomock.Add(new TalentoModel(1, "Mortal", "Dá um mortal para tras"));
-
-            monstermock = new MonsterModel{
-                Name = "Jorge",
-                Id = 1,
-                Armor = 42,
-                Description = "Jorge é um monstro",
-                HitPoints = 442,
-                Speed = 2,
-                Skills = new List<String>{
-                    "Rage",
-                    "Berserker"
-                },
-                Status = new StatusModel { 
-                    Strength =  10,
-                    Dexterity = 2,
-                    Constitution = 11,
-                    Intelligence = 1,
-                    Wisdom = 1,
-                    Charisma = 5 },
-                Action = actionmock,
-                Talent = talentomock,
-                Vulnerabilities = new List<String>{
-                    "Poison",
-                    "Fire"
-                }
-
-            };
-
-            listamonstermock.Add(monstermock);
-
-            return listamonstermock;
+           
+            return _monstersingle;
         }
 
         public MonsterModel FindById(long id)
@@ -80,3 +47,47 @@ namespace RpgTools.Repository.Implementations
         }
     }
 }
+
+
+
+//  List<MonsterModel> listamonstermock = new List<MonsterModel>();
+//             actionmock = new List<ActionModel>
+//             {
+//                 new ActionModel {Id =1, Name = "Atacar", Description = "Dá um ataque" },
+//                 new ActionModel {Id = 2, Name = "Defender", Description = "Defende"}
+//             };
+
+
+//             talentomock = new List<TalentoModel>();
+//             talentomock.Add(new TalentoModel(1, "Mortal", "Dá um mortal para tras"));
+
+//             monstermock = new MonsterModel{
+//                 Name = "Jorge",
+//                 Id = 1,
+//                 Armor = 42,
+//                 Description = "Jorge é um monstro",
+//                 HitPoints = 442,
+//                 Speed = 2,
+//                 Skills = new List<String>{
+//                     "Rage",
+//                     "Berserker"
+//                 },
+//                 Status = new StatusModel { 
+//                     Strength =  10,
+//                     Dexterity = 2,
+//                     Constitution = 11,
+//                     Intelligence = 1,
+//                     Wisdom = 1,
+//                     Charisma = 5 },
+//                 Action = actionmock,
+//                 Talent = talentomock,
+//                 Vulnerabilities = new List<String>{
+//                     "Poison",
+//                     "Fire"
+//                 }
+
+//             };
+
+//             listamonstermock.Add(monstermock);
+
+//             return listamonstermock;
