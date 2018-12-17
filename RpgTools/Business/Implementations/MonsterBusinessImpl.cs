@@ -23,7 +23,7 @@ namespace RpgTools.Business.Implementations
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            _repository.Delete(id);
         }
 
         public List<MonsterModel> FindAll()
@@ -33,12 +33,12 @@ namespace RpgTools.Business.Implementations
 
         public MonsterModel FindById(long id)
         {
-            throw new NotImplementedException();
+            return _repository.FindById(id);
         }
 
         public MonsterModel Update(MonsterModel monster)
         {
-            throw new NotImplementedException();
+            return _repository.Update(monster);
         }
     }
 }
