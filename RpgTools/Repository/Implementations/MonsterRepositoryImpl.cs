@@ -27,7 +27,7 @@ namespace RpgTools.Repository.Implementations
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+           _monstersingle.Remove(FindById(id));
         }
 
         public List<MonsterModel> FindAll()
@@ -38,12 +38,27 @@ namespace RpgTools.Repository.Implementations
 
         public MonsterModel FindById(long id)
         {
-            throw new NotImplementedException();
+           return  _monstersingle.Where(a => a.Id == id).Single();
         }
 
         public MonsterModel Update(MonsterModel monster)
         {
-            throw new NotImplementedException();
+            _monstersingle.Where(a => a.Id == monster.Id)
+            .ToList().ForEach(ab =>{
+                ab.Action = monster.Action;
+                ab.Armor = monster.Armor;
+                ab.Description = monster.Description;
+                ab.HitPoints = monster.HitPoints;
+                ab.Name = monster.Name;
+                ab.Skills = monster.Skills;
+                ab.Speed = monster.Speed;
+                ab.Status = monster.Status;
+                ab.Talent = monster.Talent;
+                ab.Vulnerabilities = monster.Vulnerabilities;
+
+            });
+
+            return FindById(monster.Id);
         }
     }
 }
