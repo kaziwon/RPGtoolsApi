@@ -7,7 +7,7 @@ namespace RpgTools.Model
 {
     public class StatusModel
     {
-     
+        public int Id;
         public int Strength { get; set; }
         public int Dexterity { get; set; }
         public int Constitution { get; set; }

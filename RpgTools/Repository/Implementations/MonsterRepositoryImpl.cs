@@ -2,49 +2,54 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using RpgTools.Model;
+using Dapper;
+using MySql.Data.MySqlClient;
+using RestNETCORE.Model.Context;
 
 namespace RpgTools.Repository.Implementations
 {
     public class MonsterRepositoryImpl : IMonsterRepository
     {
-        public static MonsterModel monstermock;
-        public static List<ActionModel> actionmock;
-        public static StatusModel statusmock;
-        public static List<TalentoModel> talentomock;
-
+        // public static MonsterModel monstermock;
+        // public static List<ActionModel> actionmock;
+        // public static StatusModel statusmock;
+        // public static List<TalentoModel> talentomock;
         private List<MonsterModel> _monstersingle = new List<MonsterModel>();
-
-        // private MonsterRepositoryImpl()
-        // {
-        //     _monstersingle = new List<MonsterModel>();
-        // }
-        public  MonsterModel Create(MonsterModel monster)
+        private MySQLContext _context;
+        public MonsterRepositoryImpl(MySQLContext context)
         {
-           _monstersingle.Add(monster);
-           return monster;
+            _context = context;
+        }
+        public MonsterModel Create(MonsterModel monster)
+        {
+
+            _monstersingle.Add(monster);
+            return monster;
         }
 
         public void Delete(long id)
         {
-           _monstersingle.Remove(FindById(id));
+            _monstersingle.Remove(FindById(id));
         }
 
         public List<MonsterModel> FindAll()
         {
-           
+
             return _monstersingle;
         }
 
         public MonsterModel FindById(long id)
         {
-           return  _monstersingle.Where(a => a.Id == id).Single();
+            return _monstersingle.Where(a => a.Id == id).Single();
         }
 
         public MonsterModel Update(MonsterModel monster)
         {
             _monstersingle.Where(a => a.Id == monster.Id)
-            .ToList().ForEach(ab =>{
+            .ToList().ForEach(ab =>
+            {
                 ab.Action = monster.Action;
                 ab.Armor = monster.Armor;
                 ab.Description = monster.Description;
