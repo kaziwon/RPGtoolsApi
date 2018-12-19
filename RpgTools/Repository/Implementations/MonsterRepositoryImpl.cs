@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using RpgTools.Model;
 using Dapper;
 using MySql.Data.MySqlClient;
-using RestNETCORE.Model.Context;
 
 namespace RpgTools.Repository.Implementations
 {
@@ -17,14 +16,10 @@ namespace RpgTools.Repository.Implementations
         // public static StatusModel statusmock;
         // public static List<TalentoModel> talentomock;
         private List<MonsterModel> _monstersingle = new List<MonsterModel>();
-        private MySQLContext _context;
-        public MonsterRepositoryImpl(MySQLContext context)
-        {
-            _context = context;
-        }
+       
         public MonsterModel Create(MonsterModel monster)
         {
-
+         
             _monstersingle.Add(monster);
             return monster;
         }
