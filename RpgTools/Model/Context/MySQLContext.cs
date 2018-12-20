@@ -17,6 +17,7 @@ namespace RestNETCORE.Model.Context
         public MySQLContext(DbContextOptions<MySQLContext> options) : base(options){}
 
         public DbSet<MonsterModel> Monsters { get; set; }
+        public DbSet<ActionModel> Actions { get; set; }
 
     }
 }

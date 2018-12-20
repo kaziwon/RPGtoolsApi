@@ -11,51 +11,52 @@ namespace RpgTools.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MonsterController : ControllerBase
+    public class ActionController : ControllerBase
     {
-        private IMonsterBusiness _monsterBusiness;
+        private IActionBusiness _actionBusiness;
 
-        public MonsterController(IMonsterBusiness monsterBusiness)
+        public ActionController(IActionBusiness actionBusiness)
         {
-            _monsterBusiness = monsterBusiness;
+            _actionBusiness = actionBusiness;
         }
 
         [HttpGet]
         public IActionResult FindAll()
         {
-            return Ok(_monsterBusiness.FindAll());
+            return Ok(_actionBusiness.FindAll());
         }
 
 
         [HttpGet("{id}")]
         public IActionResult FindById(int id)
         {
-            return Ok(_monsterBusiness.FindById(id));
+            return Ok(_actionBusiness.FindById(id));
         }
 
 
         [HttpPost]
-        public IActionResult Create([FromBody] MonsterModel monster)
+        public IActionResult Create([FromBody] ActionModel action)
         {
-            if (monster == null) return BadRequest();
-            return Ok(_monsterBusiness.Create(monster));
+            if (action == null) return BadRequest();
+            return Ok(_actionBusiness.Create(action));
         }
 
 
         [HttpPut]
-        public IActionResult Update([FromBody] MonsterModel monster)
+        public IActionResult Update([FromBody] ActionModel action)
         {
-            return Ok(_monsterBusiness.Update(monster));
+            if (action == null) return BadRequest();
+            return Ok(_actionBusiness.Update(action));
         }
 
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _monsterBusiness.Delete(id);
+            _actionBusiness.Delete(id);
             var json = new Dictionary<string, string>
             {
-                {"Message", "Monstro deletado da base com sucesso"}
+                {"Message", "Ação deletada da base com sucesso"}
             };
             var jsonSerialized = JsonConvert.SerializeObject(json);
             return Ok(jsonSerialized);

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using RpgTools.Model;
-using Dapper;
 using MySql.Data.MySqlClient;
 
 namespace RpgTools.Repository.Implementations

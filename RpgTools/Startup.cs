@@ -32,7 +32,9 @@ namespace RpgTools
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<IMonsterRepository, MonsterRepositoryImpl>();
+            services.AddSingleton<IActionRepository, ActionRepositoryImpl>();
             services.AddScoped<IMonsterBusiness, MonsterBusinessImpl>();
+            services.AddScoped<IActionBusiness, ActionBusinessImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
