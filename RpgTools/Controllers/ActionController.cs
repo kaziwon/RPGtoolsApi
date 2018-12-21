@@ -14,7 +14,6 @@ namespace RpgTools.Controllers
     public class ActionController : ControllerBase
     {
         private IActionBusiness _actionBusiness;
-
         public ActionController(IActionBusiness actionBusiness)
         {
             _actionBusiness = actionBusiness;

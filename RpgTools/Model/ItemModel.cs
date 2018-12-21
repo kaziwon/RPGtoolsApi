@@ -9,7 +9,9 @@ namespace RpgTools.Model
     {
         public int id;
         public string Description;
-        public List<TalentoModel> Talento;
+        public ICollection<TalentoModel> Talento;
+        public StatusModel status;
+        
         
        
     }

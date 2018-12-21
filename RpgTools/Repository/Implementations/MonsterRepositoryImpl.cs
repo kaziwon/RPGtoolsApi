@@ -28,7 +28,7 @@ namespace RpgTools.Repository.Implementations
             _monstersingle.Remove(FindById(id));
         }
 
-        public List<MonsterModel> FindAll()
+        public ICollection<MonsterModel> FindAll()
         {
 
             return _monstersingle;

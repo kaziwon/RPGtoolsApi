@@ -11,7 +11,7 @@ namespace RpgTools.Repository
     {
         ActionModel Create(ActionModel action);
         ActionModel FindById(int? id);
-        List<ActionModel> FindAll();
+        ICollection<ActionModel> FindAll();
         ActionModel Update(ActionModel action);
         void Delete(int? id);
       

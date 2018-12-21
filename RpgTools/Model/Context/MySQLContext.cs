@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RestNETCORE.Model.Context
+namespace RpgTools.Model.Context
 {
     public class MySQLContext : DbContext
     {
@@ -16,7 +16,7 @@ namespace RestNETCORE.Model.Context
 
         public MySQLContext(DbContextOptions<MySQLContext> options) : base(options){}
 
-        public DbSet<MonsterModel> Monsters { get; set; }
+       // public DbSet<MonsterModel> Monsters { get; set; }
         public DbSet<ActionModel> Actions { get; set; }
 
     }

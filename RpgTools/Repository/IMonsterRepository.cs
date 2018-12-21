@@ -11,7 +11,7 @@ namespace RpgTools.Repository
     {
         MonsterModel Create(MonsterModel monster);
         MonsterModel FindById(long id);
-        List<MonsterModel> FindAll();
+        ICollection<MonsterModel> FindAll();
         MonsterModel Update(MonsterModel monster);
         void Delete(long id);
       

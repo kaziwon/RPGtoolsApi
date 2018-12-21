@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using RpgTools.Model;
 using MySql.Data.MySqlClient;
-using RestNETCORE.Model.Context;
+using RpgTools.Model.Context;
 
 namespace RpgTools.Repository.Implementations
 {
@@ -41,7 +41,7 @@ namespace RpgTools.Repository.Implementations
             }
         }
 
-        public List<ActionModel> FindAll()
+        public ICollection<ActionModel> FindAll()
         {
             return _context.Actions.ToList();
         }

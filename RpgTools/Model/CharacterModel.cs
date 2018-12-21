@@ -12,10 +12,10 @@ namespace RpgTools.Model
         public string Class{get;set;}
         public int Level{get;set;}
         public string Alignment{get;set;}
-        public List<string> Inventory{get;set;}
+        public ICollection<string> Inventory{get;set;}
         public StatusModel Status{get;set;}
-        public List<ActionModel> Action{get;set;}
-        public List<TalentoModel> Talent{get;set;}
+        public ICollection<ActionModel> Action{get;set;}
+        public ICollection<TalentoModel> Talent{get;set;}
 
 
 

@@ -26,7 +26,7 @@ namespace RpgTools.Business.Implementations
             _repository.Delete(id);
         }
 
-        public List<MonsterModel> FindAll()
+        public ICollection<MonsterModel> FindAll()
         {
            return _repository.FindAll();
         }

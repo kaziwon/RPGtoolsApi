@@ -14,6 +14,8 @@ using RpgTools.Business;
 using RpgTools.Business.Implementations;
 using RpgTools.Repository;
 using RpgTools.Repository.Implementations;
+using Microsoft.EntityFrameworkCore;
+using RpgTools.Model.Context;
 
 namespace RpgTools
 {
@@ -29,10 +31,12 @@ namespace RpgTools
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connection = Configuration["MySqlConnection:MySqlConnectionString"];
+            services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<IMonsterRepository, MonsterRepositoryImpl>();
-            services.AddSingleton<IActionRepository, ActionRepositoryImpl>();
+            services.AddScoped<IActionRepository, ActionRepositoryImpl>();
             services.AddScoped<IMonsterBusiness, MonsterBusinessImpl>();
             services.AddScoped<IActionBusiness, ActionBusinessImpl>();
         }
