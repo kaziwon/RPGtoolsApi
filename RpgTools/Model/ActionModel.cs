@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace RpgTools.Model
 {
@@ -7,12 +8,16 @@ namespace RpgTools.Model
     {
      
         [Column("id_action")]
-        public int? Id { get; set; }
+        [JsonProperty(PropertyName = "ActionID")]
+        public int Id { get; set; }
         [Column("name")]
+        [JsonProperty(PropertyName="ActionName")]
         public string Name { get; set; }
         [Column("description")]
+        [JsonProperty(PropertyName="ActionDescription")]
         public string Description { get; set; }
         [Column("id_monster")]
+        [JsonProperty(PropertyName="MonsterID")]
         public int? IdMonster{get;set;}
     }
 }

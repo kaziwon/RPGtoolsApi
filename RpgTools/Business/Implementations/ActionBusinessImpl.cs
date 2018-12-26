@@ -21,7 +21,7 @@ namespace RpgTools.Business.Implementations
             return _repository.Create(action);
         }
 
-        public void Delete(int? id)
+        public void Delete(int id)
         {
              _repository.Delete(id);
         }
@@ -31,7 +31,7 @@ namespace RpgTools.Business.Implementations
             return _repository.FindAll();
         }
 
-        public ActionModel FindById(int? id)
+        public ActionModel FindById(int id)
         {
             return _repository.FindById(id);
         }

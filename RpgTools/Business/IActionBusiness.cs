@@ -9,9 +9,9 @@ namespace RpgTools.Business
    public interface IActionBusiness
     {
         ActionModel Create(ActionModel action);
-        ActionModel FindById(int? id);
+        ActionModel FindById(int id);
         ICollection<ActionModel> FindAll();
         ActionModel Update(ActionModel action);
-        void Delete(int? id);
+        void Delete(int id);
     }
 }

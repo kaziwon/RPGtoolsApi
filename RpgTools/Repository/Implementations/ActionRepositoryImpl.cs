@@ -28,7 +28,7 @@ namespace RpgTools.Repository.Implementations
             return action;
         }
 
-        public void Delete(int? id)
+        public void Delete(int id)
         {
             var result = FindById(id);
             try{
@@ -46,7 +46,7 @@ namespace RpgTools.Repository.Implementations
             return _context.Actions.ToList();
         }
 
-        public ActionModel FindById(int? id)
+        public ActionModel FindById(int id)
         {
            return _context.Actions.SingleOrDefault(a => a.Id == id);
         }

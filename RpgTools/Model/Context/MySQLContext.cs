@@ -18,6 +18,7 @@ namespace RpgTools.Model.Context
 
        // public DbSet<MonsterModel> Monsters { get; set; }
         public DbSet<ActionModel> Actions { get; set; }
+        public DbSet<StatusModel> Status { get;set; }
 
     }
 }

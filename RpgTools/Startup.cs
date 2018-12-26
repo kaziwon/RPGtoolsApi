@@ -39,6 +39,8 @@ namespace RpgTools
             services.AddScoped<IActionRepository, ActionRepositoryImpl>();
             services.AddScoped<IMonsterBusiness, MonsterBusinessImpl>();
             services.AddScoped<IActionBusiness, ActionBusinessImpl>();
+            services.AddScoped<IStatusBusiness, StatusBusinessImpl>();
+            services.AddScoped<IStatusRepository, StatusRepositoryImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
