@@ -18,6 +18,9 @@ namespace RpgTools.Model
         public string Description { get; set; }
         [Column("id_monster")]
         [JsonProperty(PropertyName="MonsterID")]
-        public int? IdMonster{get;set;}
+        public int IdMonster{get;set;}
+
+        [ForeignKey("IdMonster")]
+        public MonsterModel monster {get;set;}
     }
 }

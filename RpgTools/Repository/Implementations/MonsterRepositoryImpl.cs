@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using RpgTools.Model;
 using MySql.Data.MySqlClient;
+using RpgTools.Model.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace RpgTools.Repository.Implementations
 {
@@ -15,10 +17,17 @@ namespace RpgTools.Repository.Implementations
         // public static StatusModel statusmock;
         // public static List<TalentoModel> talentomock;
         private List<MonsterModel> _monstersingle = new List<MonsterModel>();
-       
+
+        private readonly MySQLContext _context;
+
+        public MonsterRepositoryImpl(MySQLContext context)
+        {
+            _context = context;
+        }
+
         public MonsterModel Create(MonsterModel monster)
         {
-         
+
             _monstersingle.Add(monster);
             return monster;
         }
@@ -28,10 +37,11 @@ namespace RpgTools.Repository.Implementations
             _monstersingle.Remove(FindById(id));
         }
 
-        public ICollection<MonsterModel> FindAll()
+        public List<MonsterModel> FindAll()
         {
-
-            return _monstersingle;
+            var teste = _context.Monsters.Include(x => x.Action).ToList();
+            return teste;
+            // return _monstersingle;
         }
 
         public MonsterModel FindById(long id)
@@ -44,16 +54,16 @@ namespace RpgTools.Repository.Implementations
             _monstersingle.Where(a => a.Id == monster.Id)
             .ToList().ForEach(ab =>
             {
-                ab.Action = monster.Action;
+                //ab.Action = monster.Action;
                 ab.Armor = monster.Armor;
                 ab.Description = monster.Description;
                 ab.HitPoints = monster.HitPoints;
                 ab.Name = monster.Name;
-                ab.Skills = monster.Skills;
-                ab.Speed = monster.Speed;
-                ab.Status = monster.Status;
-                ab.Talent = monster.Talent;
-                ab.Vulnerabilities = monster.Vulnerabilities;
+                // ab.Skills = monster.Skills;
+                // ab.Speed = monster.Speed;
+                // ab.Status = monster.Status;
+                // ab.Talent = monster.Talent;
+                // ab.Vulnerabilities = monster.Vulnerabilities;
 
             });
 

@@ -35,7 +35,7 @@ namespace RpgTools
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddSingleton<IMonsterRepository, MonsterRepositoryImpl>();
+            services.AddScoped<IMonsterRepository, MonsterRepositoryImpl>();
             services.AddScoped<IActionRepository, ActionRepositoryImpl>();
             services.AddScoped<IMonsterBusiness, MonsterBusinessImpl>();
             services.AddScoped<IActionBusiness, ActionBusinessImpl>();

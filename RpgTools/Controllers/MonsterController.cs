@@ -23,7 +23,9 @@ namespace RpgTools.Controllers
         [HttpGet]
         public IActionResult FindAll()
         {
-            return Ok(_monsterBusiness.FindAll());
+            var teste = new JsonSerializerSettings();
+            teste.ReferenceLoopHandling =  Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            return new JsonResult  ( _monsterBusiness.FindAll(), teste);
         }
 
 

@@ -14,11 +14,36 @@ namespace RpgTools.Model.Context
 
         }
 
-        public MySQLContext(DbContextOptions<MySQLContext> options) : base(options){}
+        public MySQLContext(DbContextOptions<MySQLContext> options) : base(options) { }
 
-       // public DbSet<MonsterModel> Monsters { get; set; }
-        public DbSet<ActionModel> Actions { get; set; }
-        public DbSet<StatusModel> Status { get;set; }
+        public virtual DbSet<MonsterModel> Monsters { get; set; }
+        public virtual DbSet<ActionModel> Actions { get; set; }
+        public DbSet<StatusModel> Status { get; set; }
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+   {
+       if (!optionsBuilder.IsConfigured)
+       {
+          
+           optionsBuilder.UseMySql(@"Server=localhost;Database=RPG_TOOLS;Uid=root;Pwd=root;SslMode=none;");
+       }
+   }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // modelBuilder.Entity<ActionModel>(entity =>
+            // {
+            //     entity.HasOne(d => d.monster)
+            //         .WithMany(p => p.Action)
+            //         .HasForeignKey(d => d.IdMonster);
+            // });
+
+            // modelBuilder.Entity<MonsterModel>(entity =>{
+            //     entity.HasOne<StatusModel>(d => d.Status)
+            //     .WithOne(p => p.monster)
+            //     .HasForeignKey<StatusModel>(d => d.IdMonster);
+                
+            // });
+        }
 
     }
 }
