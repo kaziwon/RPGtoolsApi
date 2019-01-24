@@ -16,7 +16,7 @@ namespace RpgTools.Model
         [Column("description")]
         [JsonProperty(PropertyName="ActionDescription")]
         public string Description { get; set; }
-        [Column("id_monster")]
+        [Column("ID_MONSTER")]
         [JsonProperty(PropertyName="MonsterID")]
         public int IdMonster{get;set;}
 

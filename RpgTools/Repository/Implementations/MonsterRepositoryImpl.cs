@@ -34,40 +34,49 @@ namespace RpgTools.Repository.Implementations
 
         public void Delete(long id)
         {
-            _monstersingle.Remove(FindById(id));
+
+            var result = FindById(id);
+            try{
+                if(result != null){
+                    _context.Monsters.Remove(result);
+                    _context.SaveChanges();
+                }
+            }catch(Exception e){
+                throw e;
+            }
         }
 
         public List<MonsterModel> FindAll()
         {
-            var teste = _context.Monsters.Include(x => x.Action).ToList();
-            return teste;
-            // return _monstersingle;
+            var monsterList = _context.Monsters.Include(monster => monster.Action).Include(monster => monster.Status).ToList();
+            return monsterList;
+
         }
 
         public MonsterModel FindById(long id)
         {
-            return _monstersingle.Where(a => a.Id == id).Single();
+            return _context.Monsters.Where(a => a.Id == id).
+                                     Include(monster => monster.Action).
+                                     Include(monster => monster.Status).
+                                     Single();
         }
 
         public MonsterModel Update(MonsterModel monster)
         {
-            _monstersingle.Where(a => a.Id == monster.Id)
-            .ToList().ForEach(ab =>
+            var result = FindById(monster.Id);
+            if (result != null)
             {
-                //ab.Action = monster.Action;
-                ab.Armor = monster.Armor;
-                ab.Description = monster.Description;
-                ab.HitPoints = monster.HitPoints;
-                ab.Name = monster.Name;
-                // ab.Skills = monster.Skills;
-                // ab.Speed = monster.Speed;
-                // ab.Status = monster.Status;
-                // ab.Talent = monster.Talent;
-                // ab.Vulnerabilities = monster.Vulnerabilities;
-
-            });
-
-            return FindById(monster.Id);
+                try
+                {
+                    _context.Entry(result).CurrentValues.SetValues(monster);
+                    _context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
+            return result;
         }
     }
 }

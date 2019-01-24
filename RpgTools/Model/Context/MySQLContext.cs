@@ -30,19 +30,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
    }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // modelBuilder.Entity<ActionModel>(entity =>
-            // {
-            //     entity.HasOne(d => d.monster)
-            //         .WithMany(p => p.Action)
-            //         .HasForeignKey(d => d.IdMonster);
-            // });
 
-            // modelBuilder.Entity<MonsterModel>(entity =>{
-            //     entity.HasOne<StatusModel>(d => d.Status)
-            //     .WithOne(p => p.monster)
-            //     .HasForeignKey<StatusModel>(d => d.IdMonster);
-                
-            // });
         }
 
     }

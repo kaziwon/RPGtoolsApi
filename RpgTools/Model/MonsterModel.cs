@@ -10,7 +10,7 @@ using System.Text;
 namespace RpgTools.Model
 {
     [Table("monsters")]
-    public class MonsterModel 
+    public class MonsterModel
     {
         public MonsterModel()
         {
@@ -24,11 +24,11 @@ namespace RpgTools.Model
         public string Armor { get; set; }
         public int HitPoints { get; set; }
         public string Speed { get; set; }
-        // public StatusModel Status { get; set; }
-       // public ICollection<Skill> Skills { get; set; }
-       // public ICollection<string> Vulnerabilities { get; set; }
-       // public ICollection<TalentoModel> Talent { get; set; }
+
         [InverseProperty("monster")]
         public List<ActionModel> Action { get; set; }
+
+        [InverseProperty("monster")]
+        public StatusModel Status { get; set; }
     }
 }

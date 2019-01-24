@@ -14,7 +14,7 @@ namespace RpgTools.Model
         [Column("ID_STATUS")]
         [JsonProperty(PropertyName = "StatusID")]
         [Key]
-        public int Id {get; set;}
+        public int Id { get; set; }
         [JsonProperty(PropertyName = "Strength")]
         [Column("Strength")]
         public int Strength { get; set; }
@@ -34,8 +34,9 @@ namespace RpgTools.Model
         [Column("Charisma")]
         public int Charisma { get; set; }
         [Column("ID_MONSTER")]
-        public int IdMonster {get; set;}
-
-        public MonsterModel monster {get; set;}
+        public int IdMonster { get; set; }
+        
+        [ForeignKey("IdMonster")]
+        public MonsterModel monster { get; set; }
     }
 }

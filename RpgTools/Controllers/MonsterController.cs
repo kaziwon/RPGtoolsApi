@@ -23,16 +23,18 @@ namespace RpgTools.Controllers
         [HttpGet]
         public IActionResult FindAll()
         {
-            var teste = new JsonSerializerSettings();
-            teste.ReferenceLoopHandling =  Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            return new JsonResult  ( _monsterBusiness.FindAll(), teste);
+            var serializer = new JsonSerializerSettings();
+            serializer.ReferenceLoopHandling =  Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            return new JsonResult  ( _monsterBusiness.FindAll(), serializer);
         }
 
 
         [HttpGet("{id}")]
         public IActionResult FindById(int id)
         {
-            return Ok(_monsterBusiness.FindById(id));
+            var serializer = new JsonSerializerSettings();
+            serializer.ReferenceLoopHandling =  Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            return new JsonResult(_monsterBusiness.FindById(id), serializer);
         }
 
 
@@ -47,7 +49,9 @@ namespace RpgTools.Controllers
         [HttpPut]
         public IActionResult Update([FromBody] MonsterModel monster)
         {
-            return Ok(_monsterBusiness.Update(monster));
+            var serializer = new JsonSerializerSettings();
+            serializer.ReferenceLoopHandling =  Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            return new JsonResult(_monsterBusiness.Update(monster), serializer);
         }
 
 
