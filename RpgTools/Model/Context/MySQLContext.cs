@@ -18,7 +18,8 @@ namespace RpgTools.Model.Context
 
         public virtual DbSet<MonsterModel> Monsters { get; set; }
         public virtual DbSet<ActionModel> Actions { get; set; }
-        public DbSet<StatusModel> Status { get; set; }
+        public virtual DbSet<StatusModel> Status { get; set; }
+        public virtual DbSet<TalentoModel> Talento {get;set;}
 
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
    {
@@ -30,7 +31,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
    }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+          
         }
 
     }

@@ -22,6 +22,7 @@ namespace RpgTools.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public string Armor { get; set; }
+       
         public int HitPoints { get; set; }
         public string Speed { get; set; }
 
@@ -30,5 +31,11 @@ namespace RpgTools.Model
 
         [InverseProperty("monster")]
         public StatusModel Status { get; set; }
+
+        [InverseProperty("monster")]
+        public List<TalentoModel> Talent { get; set; }
+
+        // public List<string> Skills { get; set; }
+        // public List<string> Vulnerabilities { get; set; }
     }
 }

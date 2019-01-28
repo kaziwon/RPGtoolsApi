@@ -16,6 +16,7 @@ using RpgTools.Repository;
 using RpgTools.Repository.Implementations;
 using Microsoft.EntityFrameworkCore;
 using RpgTools.Model.Context;
+using Newtonsoft.Json;
 
 namespace RpgTools
 {
@@ -33,7 +34,10 @@ namespace RpgTools
         {
             var connection = Configuration["MySqlConnection:MySqlConnectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
-
+            services.AddMvc()
+             .AddJsonOptions(options => {
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+     });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IMonsterRepository, MonsterRepositoryImpl>();
             services.AddScoped<IActionRepository, ActionRepositoryImpl>();

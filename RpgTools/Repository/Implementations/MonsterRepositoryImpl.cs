@@ -48,7 +48,10 @@ namespace RpgTools.Repository.Implementations
 
         public List<MonsterModel> FindAll()
         {
-            var monsterList = _context.Monsters.Include(monster => monster.Action).Include(monster => monster.Status).ToList();
+            var monsterList = _context.Monsters.Include(monster => monster.Action).
+                                                Include(monster => monster.Status).
+                                                Include(monster => monster.Talent).
+                                                ToList();
             return monsterList;
 
         }
@@ -58,6 +61,7 @@ namespace RpgTools.Repository.Implementations
             return _context.Monsters.Where(a => a.Id == id).
                                      Include(monster => monster.Action).
                                      Include(monster => monster.Status).
+                                     Include(monster => monster.Talent).
                                      Single();
         }
 
