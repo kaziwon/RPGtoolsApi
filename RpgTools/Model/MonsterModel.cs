@@ -35,6 +35,9 @@ namespace RpgTools.Model
         [InverseProperty("monster")]
         public List<TalentoModel> Talent { get; set; }
 
+        [InverseProperty("monster")]
+        public List<Vulnerabilities> vulnerabilities { get; set; }
+
         // public List<string> Skills { get; set; }
         // public List<string> Vulnerabilities { get; set; }
     }

@@ -12,10 +12,7 @@ namespace RpgTools.Repository.Implementations
 {
     public class MonsterRepositoryImpl : IMonsterRepository
     {
-        // public static MonsterModel monstermock;
-        // public static List<ActionModel> actionmock;
-        // public static StatusModel statusmock;
-        // public static List<TalentoModel> talentomock;
+
         private List<MonsterModel> _monstersingle = new List<MonsterModel>();
 
         private readonly MySQLContext _context;
@@ -36,21 +33,28 @@ namespace RpgTools.Repository.Implementations
         {
 
             var result = FindById(id);
-            try{
-                if(result != null){
+            try
+            {
+                if (result != null)
+                {
                     _context.Monsters.Remove(result);
                     _context.SaveChanges();
                 }
-            }catch(Exception e){
+            }
+            catch (Exception e)
+            {
                 throw e;
             }
         }
 
         public List<MonsterModel> FindAll()
         {
+
+            
             var monsterList = _context.Monsters.Include(monster => monster.Action).
                                                 Include(monster => monster.Status).
                                                 Include(monster => monster.Talent).
+                                                Include(monster => monster.vulnerabilities).
                                                 ToList();
             return monsterList;
 
@@ -62,6 +66,7 @@ namespace RpgTools.Repository.Implementations
                                      Include(monster => monster.Action).
                                      Include(monster => monster.Status).
                                      Include(monster => monster.Talent).
+                                     Include(monster => monster.vulnerabilities).
                                      Single();
         }
 

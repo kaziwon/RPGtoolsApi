@@ -20,6 +20,7 @@ namespace RpgTools.Model.Context
         public virtual DbSet<ActionModel> Actions { get; set; }
         public virtual DbSet<StatusModel> Status { get; set; }
         public virtual DbSet<TalentoModel> Talento {get;set;}
+        public virtual DbSet<Vulnerabilities> Vulnerabilities {get;set;}
 
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
    {
