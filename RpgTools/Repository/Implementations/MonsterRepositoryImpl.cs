@@ -25,7 +25,13 @@ namespace RpgTools.Repository.Implementations
         public MonsterModel Create(MonsterModel monster)
         {
 
-            _monstersingle.Add(monster);
+            try{
+             
+                _context.Add(monster);
+                _context.SaveChanges();
+            }catch(Exception e){
+                throw e;
+            }
             return monster;
         }
 
