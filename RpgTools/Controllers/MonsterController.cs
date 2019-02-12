@@ -24,8 +24,8 @@ namespace RpgTools.Controllers
         public IActionResult FindAll()
         {
             var serializer = new JsonSerializerSettings();
-            serializer.ReferenceLoopHandling =  Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            return new JsonResult  ( _monsterBusiness.FindAll(), serializer);
+            serializer.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            return new JsonResult(_monsterBusiness.FindAll(), serializer);
         }
 
 
@@ -33,8 +33,17 @@ namespace RpgTools.Controllers
         public IActionResult FindById(int id)
         {
             var serializer = new JsonSerializerSettings();
-            serializer.ReferenceLoopHandling =  Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            return new JsonResult(_monsterBusiness.FindById(id), serializer);
+            serializer.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            var retorno = _monsterBusiness.FindById(id);
+            if (retorno != null)
+                return new JsonResult(retorno, serializer);
+            else
+            {
+                
+        
+                return NotFound(new {Message = "Nenhum monstro encontrado"});
+            }
+
         }
 
 
@@ -42,7 +51,10 @@ namespace RpgTools.Controllers
         public IActionResult Create([FromBody] MonsterModel monster)
         {
             if (monster == null) return BadRequest();
-            return Ok(_monsterBusiness.Create(monster));
+
+            var serializer = new JsonSerializerSettings();
+            serializer.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            return Ok(new JsonResult( _monsterBusiness.Create(monster), serializer));
         }
 
 
@@ -50,8 +62,8 @@ namespace RpgTools.Controllers
         public IActionResult Update([FromBody] MonsterModel monster)
         {
             var serializer = new JsonSerializerSettings();
-            serializer.ReferenceLoopHandling =  Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            return new JsonResult(_monsterBusiness.Update(monster), serializer);
+            serializer.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            return Ok(new JsonResult(_monsterBusiness.Update(monster), serializer));
         }
 
 
@@ -59,12 +71,8 @@ namespace RpgTools.Controllers
         public IActionResult Delete(int id)
         {
             _monsterBusiness.Delete(id);
-            var json = new Dictionary<string, string>
-            {
-                {"Message", "Monstro deletado da base com sucesso"}
-            };
-            var jsonSerialized = JsonConvert.SerializeObject(json);
-            return Ok(jsonSerialized);
+           
+            return Ok(new {Message = "Monstro deletado da base com sucesso"});
         }
     }
 }

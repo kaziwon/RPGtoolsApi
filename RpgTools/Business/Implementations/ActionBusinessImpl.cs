@@ -21,6 +21,12 @@ namespace RpgTools.Business.Implementations
             return _repository.Create(action);
         }
 
+        public List<ActionModel> CreateMany(List<ActionModel> listAction)
+        {
+            
+            return _repository.CreateMany(listAction);
+        }
+
         public void Delete(int id)
         {
              _repository.Delete(id);

@@ -13,5 +13,6 @@ namespace RpgTools.Business
         ICollection<ActionModel> FindAll();
         ActionModel Update(ActionModel action);
         void Delete(int id);
+        List<ActionModel> CreateMany(List<ActionModel> listAction);
     }
 }

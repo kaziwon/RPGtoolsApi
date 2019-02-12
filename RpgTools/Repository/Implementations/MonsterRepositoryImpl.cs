@@ -26,7 +26,6 @@ namespace RpgTools.Repository.Implementations
         {
 
             try{
-             
                 _context.Add(monster);
                 _context.SaveChanges();
             }catch(Exception e){
@@ -73,7 +72,7 @@ namespace RpgTools.Repository.Implementations
                                      Include(monster => monster.Status).
                                      Include(monster => monster.Talent).
                                      Include(monster => monster.vulnerabilities).
-                                     Single();
+                                     SingleOrDefault();
         }
 
         public MonsterModel Update(MonsterModel monster)

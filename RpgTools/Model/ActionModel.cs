@@ -1,14 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
+using System.Linq;
+using System.Text;
+using System;
+using System.Collections.Generic;
 
 namespace RpgTools.Model
 {
     [Table("actions")]
     public class ActionModel 
     {
+      
      
         [Column("id_action")]
         [JsonProperty(PropertyName = "ActionID")]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Column("name")]
         [JsonProperty(PropertyName="ActionName")]

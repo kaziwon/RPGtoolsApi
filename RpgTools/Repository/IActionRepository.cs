@@ -14,6 +14,10 @@ namespace RpgTools.Repository
         ICollection<ActionModel> FindAll();
         ActionModel Update(ActionModel action);
         void Delete(int id);
+
+        List<ActionModel> CreateMany(List<ActionModel> listAction);
+
+        ActionModel FindByName(String nomeacao);
       
     }
 }

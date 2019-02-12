@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using RpgTools.Model;
 using MySql.Data.MySqlClient;
 using RpgTools.Model.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace RpgTools.Repository.Implementations
 {
@@ -74,6 +75,21 @@ namespace RpgTools.Repository.Implementations
          public bool Exists(long? id)
         {
             return _context.Actions.Any(b => b.Id.Equals(id));
+        }
+
+        public List<ActionModel> CreateMany(List<ActionModel> listAction)
+        {
+            foreach(ActionModel action in listAction){
+                _context.Actions.Add(action);
+            }
+            _context.SaveChanges();
+            return listAction;
+        }
+
+        public ActionModel FindByName(string nomeacao)
+        {
+          return  _context.Actions.Where(a => a.Name.Contains(nomeacao)).FirstOrDefault();
+            
         }
     }
 }
