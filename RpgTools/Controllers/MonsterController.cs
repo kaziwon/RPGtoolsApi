@@ -39,9 +39,9 @@ namespace RpgTools.Controllers
                 return new JsonResult(retorno, serializer);
             else
             {
-                
-        
-                return NotFound(new {Message = "Nenhum monstro encontrado"});
+
+
+                return NotFound(new { Message = "Nenhum monstro encontrado" });
             }
 
         }
@@ -53,8 +53,10 @@ namespace RpgTools.Controllers
             if (monster == null) return BadRequest();
 
             var serializer = new JsonSerializerSettings();
-            serializer.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            return Ok(new JsonResult( _monsterBusiness.Create(monster), serializer));
+            serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            var retorno = new JsonResult(_monsterBusiness.Create(monster), serializer);
+            retorno.StatusCode = 201;
+            return retorno;
         }
 
 
@@ -71,8 +73,8 @@ namespace RpgTools.Controllers
         public IActionResult Delete(int id)
         {
             _monsterBusiness.Delete(id);
-           
-            return Ok(new {Message = "Monstro deletado da base com sucesso"});
+
+            return Ok(new { Message = "Monstro deletado da base com sucesso" });
         }
     }
 }

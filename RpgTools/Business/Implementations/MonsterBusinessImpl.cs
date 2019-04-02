@@ -12,7 +12,7 @@ namespace RpgTools.Business.Implementations
         private readonly IMonsterRepository _repository;
         private readonly IActionBusiness _actionBusiness;
 
-        public MonsterBusinessImpl(IMonsterRepository monsterRepository, IActionBusiness actionBusiness )
+        public MonsterBusinessImpl(IMonsterRepository monsterRepository, IActionBusiness actionBusiness)
         {
             _repository = monsterRepository;
             _actionBusiness = actionBusiness;
@@ -20,7 +20,8 @@ namespace RpgTools.Business.Implementations
 
         public MonsterModel Create(MonsterModel monster)
         {
-                MonsterModel monsterRetorno = new MonsterModel{
+            MonsterModel monsterRetorno = new MonsterModel
+            {
                 Name = monster.Name,
                 Description = monster.Description,
                 Armor = monster.Armor,
@@ -29,16 +30,25 @@ namespace RpgTools.Business.Implementations
             };
 
             var monstroBasic = _repository.Create(monsterRetorno);
-            if(monstroBasic != null){
-                foreach(ActionModel action in monster.Action){
-                    action.IdMonster = monstroBasic.Id;
-                }
-                _actionBusiness.CreateMany(monster.Action);
-                monsterRetorno.Action = monster.Action;
-            
+            if (monstroBasic != null)
+            {
+                monsterRetorno.Action = CreateAction(monster, monstroBasic).Action;
             }
-           return  monsterRetorno;
+            return monsterRetorno;
         }
+
+        public MonsterModel CreateAction(MonsterModel monster, MonsterModel monstroBasic)
+        {
+            foreach (ActionModel action in monster.Action)
+            {
+                action.IdMonster = monstroBasic.Id;
+            }
+            _actionBusiness.CreateMany(monster.Action);
+
+            return monster;
+
+        }
+
 
         public void Delete(long id)
         {
@@ -47,14 +57,14 @@ namespace RpgTools.Business.Implementations
 
         public ICollection<MonsterModel> FindAll()
         {
-           return _repository.FindAll();
+            return _repository.FindAll();
         }
 
         public MonsterModel FindById(long id)
         {
-          
+
             return _repository.FindById(id);
-           
+
         }
 
         public MonsterModel Update(MonsterModel monster)
